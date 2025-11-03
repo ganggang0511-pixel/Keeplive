@@ -26,13 +26,14 @@ def login_and_check(playwright):
         page = context.new_page()
 
         page.goto(SITE_URL)
-time.sleep(3)
+        time.sleep(3)
 
-# 如果页面有“Login”按钮，先点击它
-if page.query_selector("text=Login"):
-    report.append("👆 正在点击登录按钮")
-    page.click("text=Login")
-    time.sleep(3)
+        # ✨ 如果有“Login”按钮，先点击
+        if page.query_selector("text=Login"):
+            report.append("👆 正在点击登录按钮")
+            page.click("text=Login")
+            page.wait_for_selector(USERNAME_SELECTOR, timeout=10000)
+
         report.append("✍️ 输入账号密码")
         page.fill(USERNAME_SELECTOR, USERNAME)
         time.sleep(1)
@@ -60,6 +61,7 @@ if page.query_selector("text=Login"):
 
     except Exception as e:
         report.append(f"💥 执行异常: {e}")
+
 
 def send_to_telegram(text):
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
