@@ -1,0 +1,9 @@
+export SITE_URL="https://example.com/login"
+export USERNAME="my_user"
+export PASSWORD="my_pass"
+export USERNAME_SELECTOR='input[name="user"]'
+export PASSWORD_SELECTOR='input[name="pass"]'
+export LOGIN_BUTTON_SELECTOR='button[type="submit"]'
+export SUCCESS_TEXT="Welcome"
+export TELEGRAM_TOKEN="123456:ABC..."
+export TELEGRAM_CHAT_ID="123456789"
